@@ -27,6 +27,9 @@
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
+  <!-- lib -->
+  <script type="text/javascript" async src="/public/lib/jquery-1.9.1.min.js"> </script>
+
   
   <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG"> </script>
   <script type="text/x-mathjax-config">
@@ -59,28 +62,17 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
         <div class="sidebar-title">인생게임 제 3막</div>
         <p class="sidebar-description">Full Stack developer<br> 노력은 배신하지 않는다.</p>
       </div>
-      
-      
-      
+        
       <div class="sidebar-personal-info-section">
-        <p> Follow me:
-        
-        
-        
-        <a href="https://www.linkedin.com/in/준일-서-726583121">
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-        </a>
-        
-        |
-        
-        
-        
-        <a href="https://github.com/creamyCode">
-          <i class="fa fa-github" aria-hidden="true"></i>
-        </a>
-        
-        
-        
+        <p> Follow me:   
+          <a href="https://www.linkedin.com/in/준일-서-726583121">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+           |   
+          <a href="https://github.com/creamyCode">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+            
         </p>
       </div>
       
@@ -88,29 +80,17 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
   </div>
 
   <nav class="sidebar-nav">
-    
-      
-      
-      
+        
 
-      
-
-      <span class="">
+    <span class="">
         <a class="sidebar-nav-item " href="/">
           Home
         </a>
 
         
-      </span>
+      </span>     
 
-    
-      
-      
-      
-
-      
-
-      <span class="foldable">
+    <span class="foldable">
         <a class="sidebar-nav-item active" href="/blog/">
           Blog
         </a>
@@ -134,24 +114,15 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
               </a>
           
         
-      </span>
+      </span>     
 
-    
-      
-      
-      
-
-      
-
-      <span class="">
+    <span class="">
         <a class="sidebar-nav-item " href="/about/">
           About
         </a>
 
         
-      </span>
-
-    
+      </span> 
 
   </nav>
 
@@ -163,6 +134,17 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
     </p>
   </div>
 </div>
+
+<script>
+  var filter = "win16|win32|win64|mac";
+
+  if (navigator.platform) {
+    if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
+      $('.sidebar-title').css('font-size', '20px');
+      $('.sidebar-description').css('font-size', '14px');
+    }
+  }
+</script>
 
 
     <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
