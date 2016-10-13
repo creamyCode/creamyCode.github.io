@@ -11,7 +11,7 @@
 
   <title>
     
-      Blog &middot; creamyCode
+      Webpack summary &middot; creamyCode
     
   </title>
 
@@ -91,7 +91,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
       </span>     
 
     <!-- <span class="foldable">
-        <a class="sidebar-nav-item active" href="/blog/">
+        <a class="sidebar-nav-item " href="/blog/">
           Blog
         </a>
 
@@ -191,28 +191,20 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
       </div>
 
       <div class="container content">
-        <div class="posts">
+        <div class="post">
+  <h1 class="post-title">Webpack summary</h1>
+  <span class="post-date">13 Oct 2016</span>
+   | 
   
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/javascript/2016/10/13/Webpack/">
-        Webpack summary
-      </a>
-    </h1>
-
-    <span class="post-date">13 Oct 2016</span>
-     | 
-    
     <a href="/blog/tags/#webpack" class="post-tag">webpack</a>
-    
+  
     <a href="/blog/tags/#react" class="post-tag">react</a>
-    
+  
     <a href="/blog/tags/#build" class="post-tag">build</a>
-    
-    
-
-    <article>
-      <p>몇달 전 Electron 정리겸 React.js 스터디겸 데스크탑 시계 앱을 만들어 보려했습니다. 근데 React.js를 적용하려 보니 많은 준비과정이 필요하더군요… 그 중 하나가 바로 Webpack이였습니다. 여기선 제 나름대로 공부하며 webpack의 주요부분을 요약정리 하겠습니다.</p>
+  
+  
+  <article>
+    <p>몇달 전 Electron 정리겸 React.js 스터디겸 데스크탑 시계 앱을 만들어 보려했습니다. 근데 React.js를 적용하려 보니 많은 준비과정이 필요하더군요… 그 중 하나가 바로 Webpack이였습니다. 여기선 제 나름대로 공부하며 webpack의 주요부분을 요약정리 하겠습니다.</p>
 
 <h2 id="webpack---">Webpack 왜 생겼나 ?</h2>
 <p>규모가 큰 웹 어플리케이션 개발에는 복잡한 Javascript, 여러 라이브러리에대한 의존성을 함께 가져갑니다. 이러한 문제점에 대응하기위해 개발자 커뮤니티에서는 Javascript 모듈화, Javascript의 기능을 확장해주는 언어 등의 방법을 고안합니다. 위와 같은 방법을 적용하기 위해선 트랜스파일 및 컴파일과 같은 단계가 필요하며 이러한 일련의 과정을 돕는 도구가 <strong>Webpack</strong> 입니다.</p>
@@ -397,24 +389,33 @@ Webpack은 지정한 파일(Entry)로 부터 require, import문을 참고해 해
 <span class="p">...</span></code></pre></figure>
 
 
-    <article>
-    <div class="post-more">
-      
-      <a href="/javascript/2016/10/13/Webpack/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
-      
-      <a href="/javascript/2016/10/13/Webpack/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
-    </div>
-  </div>
-  
+  </article>
 </div>
 
-<div class="pagination">
-  
-    <span class="pagination-item older">Older</span>
-  
-  
-    <span class="pagination-item newer">Newer</span>
-  
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+  </ul>
+</div>
+
+
+<div class="comments">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+var disqus_config = function () {
+  this.page.url = 'http://localhost:4000/javascript/2016/10/13/Webpack/'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '/javascript/2016/10/13/Webpack'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = '//creamycode.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 
 
