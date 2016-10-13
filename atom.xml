@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>creamyCode</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2016-10-13T21:16:01+09:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://creamycode.github.io/atom.xml" rel="self"/>
+ <link href="http://creamycode.github.io/"/>
+ <updated>2016-10-13T21:22:07+09:00</updated>
+ <id>http://creamycode.github.io</id>
  <author>
    <name>creamyCode</name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Webpack summary</title>
-   <link href="http://localhost:4000/javascript/2016/10/13/Webpack/"/>
+   <link href="http://creamycode.github.io/javascript/2016/10/13/Webpack/"/>
    <updated>2016-10-13T00:00:00+09:00</updated>
-   <id>http://localhost:4000/javascript/2016/10/13/Webpack</id>
+   <id>http://creamycode.github.io/javascript/2016/10/13/Webpack</id>
    <content type="html">&lt;p&gt;몇달 전 Electron 정리겸 React.js 스터디겸 데스크탑 시계 앱을 만들어 보려했습니다. 근데 React.js를 적용하려 보니 많은 준비과정이 필요하더군요… 그 중 하나가 바로 Webpack이였습니다. 여기선 제 나름대로 공부하며 webpack의 주요부분을 요약정리 하겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;webpack---&quot;&gt;Webpack 왜 생겼나 ?&lt;/h2&gt;
