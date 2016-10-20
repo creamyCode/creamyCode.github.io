@@ -155,6 +155,12 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
       <a href="/blog/tags/#Node.js" class="post-tag">
       Node.js
     </a> 
+      <a href="/blog/tags/#build" class="post-tag">
+      build
+    </a> 
+      <a href="/blog/tags/#Grunt" class="post-tag">
+      Grunt
+    </a> 
     </div>
 
   </nav>
@@ -204,6 +210,153 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/javascript/2016/10/20/Electron_Build/">
+        Window에서 Electron Packaging부터 Installer까지 (with Grunt)
+      </a>
+    </h1>
+
+    <span class="post-date">20 Oct 2016</span>
+     | 
+    
+    <a href="/blog/tags/#electron" class="post-tag">Electron</a>
+    
+    <a href="/blog/tags/#build" class="post-tag">build</a>
+    
+    <a href="/blog/tags/#grunt" class="post-tag">Grunt</a>
+    
+    
+
+    <article>
+      <p>Electron을 앱을 배포하기 위해서는 앱을 Packaging후 깔끔하게 installer 파일로 bulid하여 배포하는게 좋을텐데요. 여기서는 기본적인 Packaging부터 Installer Build, Grunt를 이용해 빌드 자동화 까지 해보도록 하겠습니다.</p>
+
+<h2 id="electron-build-process">Electron Build Process</h2>
+<p>Electron Build 과정은 크게 Packaging, Asar 압축, Installer Build 세 단계 정도로 나눠볼 수 있습니다. 좀더 살을 붙이자면 아래와 같습니다.</p>
+<ul>
+  <li>Packaging : 프로젝트를 <strong>electron-packager</strong> 모듈을 이용해 기본 패킹하는 과정</li>
+  <li>Asar 압축 : Packaging후 resources의 App폴더를 Asar파일로 압축</li>
+  <li>Installer Bulid : Packaging후 나온 App을 Installer 하나의 파일로 만드는 과정</li>
+</ul>
+
+<h2 id="electron-build-">Electron Build 준비물</h2>
+<p>우선 전체 과정에 필요한 모듈을 설치합니다. 각 모듈은 아래와 같습니다.</p>
+<ul>
+  <li>electron-packager : electron 패키징 모듈</li>
+  <li>electron-installer-squirrel-windows : 윈도우용 일렉트론 인스톨러 빌드 모듈</li>
+  <li>Asar : asar 압축 지원 모듈</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">electron</span><span class="o">-</span><span class="nx">packager</span> <span class="nx">electron</span><span class="o">-</span><span class="nx">installer</span><span class="o">-</span><span class="nx">squirrel</span><span class="o">-</span><span class="nx">windows</span> <span class="nx">asar</span></code></pre></figure>
+
+<h2 id="electron-packaging">Electron Packaging</h2>
+<p><a href="https://github.com/electron-userland/electron-packager">Electron Packaging</a>모듈을 통해 프로젝트를 패키징 합니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">electron</span><span class="o">-</span><span class="nx">packager</span> <span class="p">.</span> <span class="nx">TestApp</span> <span class="o">--</span><span class="nx">platform</span> <span class="nx">win32</span> <span class="o">--</span><span class="nx">arch</span> <span class="nx">x64</span> <span class="o">--</span><span class="nx">out</span> <span class="nx">dist</span><span class="o">/</span></code></pre></figure>
+
+<p>위의 과정을 거치면 현재 폴더에 dist/TestApp-win32-x64 폴더하위로 프로젝트가 패키징 된 것을 볼 수 있습니다. 이상태로 TestApp-win32-x64폴더내의 TestApp.exe파일을 실행하면 앱이 실행됩니다.</p>
+
+<h2 id="asar-">Asar 압축</h2>
+<p><a href="https://github.com/electron/asar">Asar</a>은 Electron에서 지원하는 압축 포맷입니다. dist/TestApp-win32-x64/resources폴더를 보시면 app폴더를 보실 수 있으며 여기엔 프로젝트의 코드가 그대로 존재합니다. Asar압축은 이 app폴더를 app.asar파일로 만들어주는 과정입니다.
+Asar 압축 명령은 다음과 같습니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">asar</span> <span class="nx">p</span> <span class="p">.</span><span class="o">/</span><span class="nx">dist</span><span class="o">/</span><span class="nx">OpenClib</span><span class="o">-</span><span class="nx">win32</span><span class="o">-</span><span class="nx">x64</span><span class="o">/</span><span class="nx">resources</span><span class="o">/</span><span class="nx">app</span><span class="p">.</span><span class="nx">asar</span> <span class="p">.</span><span class="o">/</span><span class="nx">dist</span><span class="o">/</span><span class="nx">OpenClib</span><span class="o">-</span><span class="nx">win32</span><span class="o">-</span><span class="nx">x64</span><span class="o">/</span><span class="nx">resources</span><span class="o">/</span><span class="nx">app</span></code></pre></figure>
+
+<p>압축이후 기존의 app폴더는 지워준후 실행파일을 실행해보면 실행이 잘되는것을 보실수 있습니다.</p>
+
+<p>위의 두과정은 한데 묶을수 있습니다. electron-packager를 실행시 –asar옵션을 추가해주면 됩니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">electron</span><span class="o">-</span><span class="nx">packager</span> <span class="p">.</span> <span class="nx">TestApp</span> <span class="o">--</span><span class="nx">asar</span> <span class="o">--</span><span class="nx">platform</span> <span class="nx">win32</span> <span class="o">--</span><span class="nx">arch</span> <span class="nx">x64</span> <span class="o">--</span><span class="nx">out</span> <span class="nx">dist</span><span class="o">/</span></code></pre></figure>
+
+<h2 id="installer-build">Installer build</h2>
+<p><a href="https://www.npmjs.com/package/electron-installer-squirrel-windows">electron-installer-squirrel-windows</a>모듈을 통해 패키지를 인스톨러로 빌드합니다. electron을 빌드해주는 다른 모듈들이 있지만 약간씩 문제가 있어 이 모듈을 사용합니다. 이 모듈은 쉘커맨드를 사용할 수도 있지만 여기서는 installer.js라는 인스톨 환경설정파일을 만들어서 적용해 보겠습니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// installer.js</span>
+<span class="kd">var</span> <span class="nx">createInstaller</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron-installer-squirrel-windows'</span><span class="p">);</span>
+
+<span class="nx">createInstaller</span><span class="p">({</span>
+  <span class="na">name</span> <span class="p">:</span> <span class="s1">'TestApp'</span><span class="p">,</span>
+  <span class="na">path</span><span class="p">:</span> <span class="s1">'./dist/TestApp-win32-x64'</span><span class="p">,</span>
+  <span class="na">out</span><span class="p">:</span> <span class="s1">'./dist/installer'</span><span class="p">,</span>
+  <span class="na">authors</span><span class="p">:</span> <span class="s1">'creamyCode'</span><span class="p">,</span>
+  <span class="na">exe</span><span class="p">:</span> <span class="s1">'TestApp.exe'</span><span class="p">,</span>
+  <span class="na">appDirectory</span><span class="p">:</span> <span class="s1">'./dist/TestApp-win32-x64'</span><span class="p">,</span>
+  <span class="na">overwrite</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">setup_icon</span><span class="p">:</span> <span class="s1">'favicon.ico'</span>
+<span class="p">},</span> <span class="kd">function</span> <span class="nx">done</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Build success !!'</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>실행은 간단히</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">node</span> <span class="nx">Installer</span><span class="p">.</span><span class="nx">js</span></code></pre></figure>
+
+<h1 id="grunt----">Grunt 를 통한 빌드 자동화</h1>
+<h2 id="grunt-">Grunt ?</h2>
+<p><a href="http://gruntjs.com/">Grunt</a>는 태스크 기반 <strong>Javascript build tool</strong> 입니다. Grunt는 기본적으로 사용자가 작성한 Gruntfile의 Task기반으로 작동되며 이 태스크는 minification, compilation, unit testing, linting등등이 있습니다.</p>
+
+<h2 id="grunt--1">Grunt 설치</h2>
+<p>우선 grunt-cli를 설치하겠습니다. CLI는 Command Line Interface의 줄임말이며 콘솔에서 grunt를 사용할 수 있게 해주는 녀석입니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">npm</span> <span class="nx">i</span> <span class="o">-</span><span class="nx">g</span> <span class="nx">grunt</span><span class="o">-</span><span class="nx">cli</span></code></pre></figure>
+
+<p>다음은 프로젝트에 grunt 및 grunt로 쉘 커맨드를 실행할 수 있는 grunt-exec모듈를 설치합니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">npm</span> <span class="nx">i</span> <span class="o">--</span><span class="nx">save</span><span class="o">-</span><span class="nx">dev</span> <span class="nx">grunt</span> <span class="nx">grunt</span><span class="o">-</span><span class="nx">exec</span></code></pre></figure>
+
+<h2 id="grunt--2">Grunt 작업설정</h2>
+<p>Grunt 작업 설정은 <strong>Gruntfile.js</strong> 를 통해 할 수 있으며 다음은 일렉트론 패키징 및 인스톨러 빌드의 기본적인 부분으로 작성된 형태입니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// 플러그인 명세</span>
+  <span class="p">[</span>
+    <span class="s1">'grunt-exec'</span>
+  <span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">task</span><span class="p">){</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>   <span class="c1">// grunt 플러그인 등록</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Project configuration.</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+    <span class="na">pkg</span><span class="p">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">readJSON</span><span class="p">(</span><span class="s1">'package.json'</span><span class="p">),</span>
+      <span class="c1">// grunt-exec 플러그인 작업 명세</span>
+      <span class="s1">'exec'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// 일렉트론 패키징 과정</span>
+        <span class="s1">'x64-packager'</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">command</span><span class="p">:</span> <span class="s2">"electron-packager . TestApp --overwrite --asar --platform win32 --arch x64 --out dist/ --icon favicon.ico --ignore=.gitignore --ignore=Gruntfile.js --ignore=webpack.config.js --ignore=installer.js"</span><span class="p">,</span>
+          <span class="na">stdout</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">stderr</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="c1">// 일렉트론 인스톨러 빌드 과정</span>
+        <span class="s1">'x64-installer'</span><span class="p">:</span> <span class="p">{</span>
+          <span class="na">command</span><span class="p">:</span> <span class="s2">"node ./installer.js x64"</span><span class="p">,</span>
+          <span class="na">stdout</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">stderr</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+
+  <span class="p">});</span>
+
+  <span class="c1">// 작업 등록, 배열내의 인덱스 차례로 플러그인 관련작업이 동작</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'exec'</span><span class="p">]);</span>
+
+<span class="p">};</span></code></pre></figure>
+
+<h2 id="grunt--3">Grunt 실행</h2>
+<p>실행은 매우 간단합니다. 다음과 같이 실행해주시면 됩니다.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">grunt</span></code></pre></figure>
+
+
+    <article>
+    <div class="post-more">
+      
+      <a href="/javascript/2016/10/20/Electron_Build/#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      
+      <a href="/javascript/2016/10/20/Electron_Build/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/javascript/2016/10/18/Electron/">
         Electron, Javascript로 데스크탑 앱을 만든다
       </a>
@@ -238,6 +391,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
 <figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="p">{</span>
     <span class="s2">"name"</span> <span class="err">:</span> <span class="s2">"HelloElectron"</span><span class="p">,</span>
     <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"description"</span><span class="err">:</span> <span class="s2">"TestApp"</span><span class="p">,</span>
     <span class="s2">"main"</span> <span class="err">:</span> <span class="s2">"main.js"</span><span class="p">,</span>
     <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
       <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"electron main.js"</span>
