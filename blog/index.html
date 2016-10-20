@@ -256,6 +256,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// main.js</span>
 <span class="kr">const</span> <span class="nx">electron</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'electron'</span><span class="p">)</span>  <span class="c1">// 일렉트론 모듈</span>
 <span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">electron</span><span class="p">.</span><span class="nx">app</span>                <span class="c1">// 앱 생명주기 조작 모듈</span>
+<span class="kr">const</span> <span class="nx">BrowserWindow</span> <span class="o">=</span> <span class="nx">electron</span><span class="p">.</span><span class="nx">BrowserWindow</span>  <span class="c1">// 네이티브 브라우저 창을 만드는 모듈.</span>
 
 <span class="c1">// 모든창이 닫혔을때의 이벤트</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'window-all-closed'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -271,7 +272,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
   <span class="nx">mainWindow</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindow</span><span class="p">({</span><span class="na">width</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">600</span><span class="p">});</span>
 
   <span class="c1">// 그리고 현재 디렉터리의 index.html을 로드합니다.</span>
-  <span class="nx">mainWindow</span><span class="p">.</span><span class="nx">loadUrl</span><span class="p">(</span><span class="s1">'file://'</span> <span class="o">+</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/index.html'</span><span class="p">);</span>
+  <span class="nx">mainWindow</span><span class="p">.</span><span class="nx">loadURL</span><span class="p">(</span><span class="s1">'file://'</span> <span class="o">+</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/index.html'</span><span class="p">);</span>
 
   <span class="c1">// 선언한 윈도우창 닫기 이벤트</span>
   <span class="nx">mainWindow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'closed'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -291,7 +292,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
 <span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
   <span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="s2">"UTF-8"</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="err">헬로</span> <span class="err">월드</span><span class="o">!&lt;</span><span class="sr">/title</span><span class="err">&gt;
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="err">일렉트론</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
 </span>  <span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
 </span>  <span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="err">헬로</span> <span class="err">일렉트론</span><span class="o">!&lt;</span><span class="sr">/h1</span><span class="err">&gt;
