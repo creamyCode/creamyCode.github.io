@@ -4,7 +4,7 @@
  <title>creamyCode</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2016-10-20T19:15:33+09:00</updated>
+ <updated>2016-10-21T10:27:44+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>creamyCode</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>Window에서 Electron Packaging부터 Installer까지 (with Grunt)</title>
+   <title>Electron, Window에서 Packaging부터 Installer까지 (with Grunt)</title>
    <link href="http://localhost:4000/javascript/2016/10/20/Electron_Build/"/>
    <updated>2016-10-20T00:00:00+09:00</updated>
    <id>http://localhost:4000/javascript/2016/10/20/Electron_Build</id>
@@ -77,7 +77,7 @@ Asar 압축 명령은 다음과 같습니다.&lt;/p&gt;
 
 &lt;p&gt;실행은 간단히&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Installer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;installer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;js&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h1 id=&quot;grunt----&quot;&gt;Grunt 를 통한 빌드 자동화&lt;/h1&gt;
 &lt;h2 id=&quot;grunt-&quot;&gt;Grunt ?&lt;/h2&gt;

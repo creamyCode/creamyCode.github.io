@@ -124,47 +124,44 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
         
       </span>  -->
 
-
-
     <a class="sidebar-nav-item " href="/">Home</a>
     <a class="sidebar-nav-item " href="/about">About</a>
     <a class="sidebar-nav-item " href="/blog/categories">Categories</a>
     
-    <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/#Javascript">
+    <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/#javascript">
           Javascript
         </a>
         
     <a class="sidebar-nav-item " href="/blog/tags">Tags</a>
     <div class="sidebar-tagbox">
       
-      <a href="/blog/tags/#Webpack" class="post-tag">
+      <a href="/blog/tags/#webpack" class="post-tag">
       Webpack
     </a> 
-      <a href="/blog/tags/#React" class="post-tag">
+      <a href="/blog/tags/#react" class="post-tag">
       React
     </a> 
-      <a href="/blog/tags/#Build" class="post-tag">
+      <a href="/blog/tags/#build" class="post-tag">
       Build
     </a> 
-      <a href="/blog/tags/#Javascript" class="post-tag">
+      <a href="/blog/tags/#javascript" class="post-tag">
       Javascript
     </a> 
-      <a href="/blog/tags/#Electron" class="post-tag">
+      <a href="/blog/tags/#electron" class="post-tag">
       Electron
     </a> 
-      <a href="/blog/tags/#Node.js" class="post-tag">
+      <a href="/blog/tags/#node-js" class="post-tag">
       Node.js
     </a> 
       <a href="/blog/tags/#build" class="post-tag">
       build
     </a> 
-      <a href="/blog/tags/#Grunt" class="post-tag">
+      <a href="/blog/tags/#grunt" class="post-tag">
       Grunt
     </a> 
     </div>
 
   </nav>
-
 
   <div class="sidebar-item sidebar-powered">
     <p>
@@ -176,17 +173,12 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 </div>
 
 <script>
-  // var filter = "win16|win32|win64|mac";
-  //
-  // if (navigator.platform) {
-  //   if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-  //     // Mobile
-  //   } else {
-  //     // PC
-  //     $('.sidebar-title').attr('style', "font-family: 'Nanum Brush Script', serif; font-size:35px;")
-  //     $('.sidebar-description').attr('style', "font-family: 'Nanum Brush Script', serif; font-size:30px;line-height:30px;")
-  //   }
-  // }
+  $(document).on('click', '.sidebar-nav-item-sub', function() {
+    $('.sidebar-checkbox').prop('checked', false);
+  });
+  $(document).on('click', '.sidebar-tagbox .post-tag', function() {
+    $('.sidebar-checkbox').prop('checked', false);
+  });
 </script>
 
 
@@ -199,7 +191,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
             <a href="/" title="Home" title="creamyCode">
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
-            꿈꾸고 노력하라!!
+            인생은 게임
             <!-- <small></small> -->
           </h3>
         </div>
@@ -211,12 +203,12 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
   <div class="post">
     <h1 class="post-title">
       <a href="/javascript/2016/10/20/Electron_Build/">
-        Window에서 Electron Packaging부터 Installer까지 (with Grunt)
+        Electron, Window에서 Packaging부터 Installer까지 (with Grunt)
       </a>
     </h1>
 
     <span class="post-date">20 Oct 2016</span>
-     | 
+     |
     
     <a href="/blog/tags/#electron" class="post-tag">Electron</a>
     
@@ -227,7 +219,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
     
 
     <article>
-      <p>Electron을 앱을 배포하기 위해서는 앱을 Packaging후 깔끔하게 installer 파일로 bulid하여 배포하는게 좋을텐데요. 여기서는 기본적인 Packaging부터 Installer Build, Grunt를 이용해 빌드 자동화 까지 해보도록 하겠습니다.</p>
+      <!-- <p>Electron을 앱을 배포하기 위해서는 앱을 Packaging후 깔끔하게 installer 파일로 bulid하여 배포하는게 좋을텐데요. 여기서는 기본적인 Packaging부터 Installer Build, Grunt를 이용해 빌드 자동화 까지 해보도록 하겠습니다.</p>
 
 <h2 id="electron-build-process">Electron Build Process</h2>
 <p>Electron Build 과정은 크게 Packaging, Asar 압축, Installer Build 세 단계 정도로 나눠볼 수 있습니다. 좀더 살을 붙이자면 아래와 같습니다.</p>
@@ -287,7 +279,7 @@ Asar 압축 명령은 다음과 같습니다.</p>
 
 <p>실행은 간단히</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">node</span> <span class="nx">Installer</span><span class="p">.</span><span class="nx">js</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">node</span> <span class="nx">installer</span><span class="p">.</span><span class="nx">js</span></code></pre></figure>
 
 <h1 id="grunt----">Grunt 를 통한 빌드 자동화</h1>
 <h2 id="grunt-">Grunt ?</h2>
@@ -345,7 +337,7 @@ Asar 압축 명령은 다음과 같습니다.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">grunt</span></code></pre></figure>
 
-
+ -->
     <article>
     <div class="post-more">
       
@@ -363,7 +355,7 @@ Asar 압축 명령은 다음과 같습니다.</p>
     </h1>
 
     <span class="post-date">18 Oct 2016</span>
-     | 
+     |
     
     <a href="/blog/tags/#electron" class="post-tag">Electron</a>
     
@@ -374,7 +366,7 @@ Asar 압축 명령은 다음과 같습니다.</p>
     
 
     <article>
-      <p><img src="/public/img/2016/electron.jpg" /></p>
+      <!-- <p><img src="/public/img/2016/electron.jpg" /></p>
 <h2 id="electron-">Electron ?</h2>
 <p><a href="http://electron.atom.io/">Electron</a>은 Github에서 제공하는 web 기반 기술의 desktop application 제작 플랫폼입니다. Electron을 이용하여 개발된 앱들에는 slack, visual studio code등 이 있으며 GitHub에서는 Electron을 이용하여 Atom에디터를 개발하여 오픈소스로 공개하였습니다. 여기서는 Electron의 기본적인 내용 및 개발방법에 대해 알아보겠습니다.</p>
 
@@ -459,7 +451,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
 <figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="nx">npm</span> <span class="nx">start</span></code></pre></figure>
 
 <p>이는 앞서 작성한 package.json파일내의 start부분이 실행되는것 입니다.</p>
-
+ -->
     <article>
     <div class="post-more">
       
@@ -477,7 +469,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
     </h1>
 
     <span class="post-date">13 Oct 2016</span>
-     | 
+     |
     
     <a href="/blog/tags/#webpack" class="post-tag">Webpack</a>
     
@@ -490,7 +482,7 @@ Electron의 구조는 위와 같이 Main Process와 Renderer Process로 나뉘�
     
 
     <article>
-      <p>몇달 전 Electron 정리겸 React.js 스터디겸 데스크탑 시계 앱을 만들어 보려했습니다. 근데 React.js를 적용하려 보니 많은 준비과정이 필요하더군요… 그 중 하나가 바로 Webpack이였습니다. 여기선 제 나름대로 공부하며 webpack의 주요부분을 요약정리 하겠습니다.</p>
+      <!-- <p>몇달 전 Electron 정리겸 React.js 스터디겸 데스크탑 시계 앱을 만들어 보려했습니다. 근데 React.js를 적용하려 보니 많은 준비과정이 필요하더군요… 그 중 하나가 바로 Webpack이였습니다. 여기선 제 나름대로 공부하며 webpack의 주요부분을 요약정리 하겠습니다.</p>
 
 <h2 id="webpack---">Webpack 왜 생겼나 ?</h2>
 <p>규모가 큰 웹 어플리케이션 개발에는 복잡한 Javascript, 여러 라이브러리에대한 의존성을 함께 가져갑니다. 이러한 문제점에 대응하기위해 개발자 커뮤니티에서는 Javascript 모듈화, Javascript의 기능을 확장해주는 언어 등의 방법을 고안합니다. 위와 같은 방법을 적용하기 위해선 트랜스파일 및 컴파일과 같은 단계가 필요하며 이러한 일련의 과정을 돕는 도구가 <strong>Webpack</strong> 입니다.</p>
@@ -674,7 +666,7 @@ Webpack은 지정한 파일(Entry)로 부터 require, import문을 참고해 해
 <span class="p">]</span>
 <span class="p">...</span></code></pre></figure>
 
-
+ -->
     <article>
     <div class="post-more">
       
@@ -694,7 +686,6 @@ Webpack은 지정한 파일(Entry)로 부터 require, import문을 참고해 해
     <span class="pagination-item newer">Newer</span>
   
 </div>
-
 
       </div>
     </div>

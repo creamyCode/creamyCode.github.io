@@ -11,7 +11,7 @@
 
   <title>
     
-      Window에서 Electron Packaging부터 Installer까지 (with Grunt) &middot; creamyCode
+      Electron, Window에서 Packaging부터 Installer까지 (with Grunt) &middot; creamyCode
     
   </title>
 
@@ -124,47 +124,44 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
         
       </span>  -->
 
-
-
     <a class="sidebar-nav-item " href="/">Home</a>
     <a class="sidebar-nav-item " href="/about">About</a>
     <a class="sidebar-nav-item " href="/blog/categories">Categories</a>
     
-    <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/#Javascript">
+    <a class="sidebar-nav-item sidebar-nav-item-sub " href="/blog/categories/#javascript">
           Javascript
         </a>
         
     <a class="sidebar-nav-item " href="/blog/tags">Tags</a>
     <div class="sidebar-tagbox">
       
-      <a href="/blog/tags/#Webpack" class="post-tag">
+      <a href="/blog/tags/#webpack" class="post-tag">
       Webpack
     </a> 
-      <a href="/blog/tags/#React" class="post-tag">
+      <a href="/blog/tags/#react" class="post-tag">
       React
     </a> 
-      <a href="/blog/tags/#Build" class="post-tag">
+      <a href="/blog/tags/#build" class="post-tag">
       Build
     </a> 
-      <a href="/blog/tags/#Javascript" class="post-tag">
+      <a href="/blog/tags/#javascript" class="post-tag">
       Javascript
     </a> 
-      <a href="/blog/tags/#Electron" class="post-tag">
+      <a href="/blog/tags/#electron" class="post-tag">
       Electron
     </a> 
-      <a href="/blog/tags/#Node.js" class="post-tag">
+      <a href="/blog/tags/#node-js" class="post-tag">
       Node.js
     </a> 
       <a href="/blog/tags/#build" class="post-tag">
       build
     </a> 
-      <a href="/blog/tags/#Grunt" class="post-tag">
+      <a href="/blog/tags/#grunt" class="post-tag">
       Grunt
     </a> 
     </div>
 
   </nav>
-
 
   <div class="sidebar-item sidebar-powered">
     <p>
@@ -176,17 +173,12 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 </div>
 
 <script>
-  // var filter = "win16|win32|win64|mac";
-  //
-  // if (navigator.platform) {
-  //   if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-  //     // Mobile
-  //   } else {
-  //     // PC
-  //     $('.sidebar-title').attr('style', "font-family: 'Nanum Brush Script', serif; font-size:35px;")
-  //     $('.sidebar-description').attr('style', "font-family: 'Nanum Brush Script', serif; font-size:30px;line-height:30px;")
-  //   }
-  // }
+  $(document).on('click', '.sidebar-nav-item-sub', function() {
+    $('.sidebar-checkbox').prop('checked', false);
+  });
+  $(document).on('click', '.sidebar-tagbox .post-tag', function() {
+    $('.sidebar-checkbox').prop('checked', false);
+  });
 </script>
 
 
@@ -199,7 +191,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
             <a href="/" title="Home" title="creamyCode">
               <img class="masthead-logo" src="/public/logo.png"/>
             </a>
-            꿈꾸고 노력하라!!
+            인생은 게임
             <!-- <small></small> -->
           </h3>
         </div>
@@ -207,7 +199,7 @@ MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], proces
 
       <div class="container content">
         <div class="post">
-  <h1 class="post-title">Window에서 Electron Packaging부터 Installer까지 (with Grunt)</h1>
+  <h1 class="post-title">Electron, Window에서 Packaging부터 Installer까지 (with Grunt)</h1>
   <span class="post-date">20 Oct 2016</span>
    | 
   
@@ -279,7 +271,7 @@ Asar 압축 명령은 다음과 같습니다.</p>
 
 <p>실행은 간단히</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">node</span> <span class="nx">Installer</span><span class="p">.</span><span class="nx">js</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">node</span> <span class="nx">installer</span><span class="p">.</span><span class="nx">js</span></code></pre></figure>
 
 <h1 id="grunt----">Grunt 를 통한 빌드 자동화</h1>
 <h2 id="grunt-">Grunt ?</h2>
