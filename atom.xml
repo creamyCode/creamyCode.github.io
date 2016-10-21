@@ -4,7 +4,7 @@
  <title>creamyCode</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2016-10-21T14:40:51+09:00</updated>
+ <updated>2016-10-21T14:50:38+09:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>creamyCode</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>Electron, Window에서 Packaging부터 Installer까지 (with Grunt)</title>
+   <title>Electron, Window에서 Packaging부터 Installer까지</title>
    <link href="http://localhost:4000/javascript/2016/10/20/Electron_Build/"/>
    <updated>2016-10-20T00:00:00+09:00</updated>
    <id>http://localhost:4000/javascript/2016/10/20/Electron_Build</id>
